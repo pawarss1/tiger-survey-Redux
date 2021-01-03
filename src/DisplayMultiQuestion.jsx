@@ -6,7 +6,7 @@ function DisplayMultiQuestion(props) {
     <div>
       <Form>
         <legend>{props.question.question}</legend>
-        {props.question.options.map((option, index) => {
+        {props.question.option.map((option, index) => {
           return (
             <FormGroup check>
               <Label check>

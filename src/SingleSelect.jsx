@@ -10,8 +10,6 @@ import {
 import { useDispatch } from "react-redux";
 import { surveySlice } from "./Store/surveySlice";
 
-
-
 function SingleSelect(props) {
   const dispatch = useDispatch();
   const disableFlag = true;
@@ -77,13 +75,13 @@ function SingleSelect(props) {
         className="survery-btn"
         onClick={() => {
           const surveyId = props.surveyId;
-          console.log("surveyId ",surveyId)
+          console.log("surveyId ", surveyId);
           const payload = {
             option: question.option,
             question: question.question,
             type: question.type,
-            surveyId
-          } 
+            surveyId,
+          };
           dispatch(surveySlice.actions.addQuestion(payload));
           props.setDropdownText("Select question type");
         }}
@@ -93,9 +91,17 @@ function SingleSelect(props) {
       <Button
         className="survery-btn"
         onClick={() => {
-          props.questionListHandler(question);
-          props.setPublishFlag(true);
+          const surveyId = props.surveyId;
+          console.log("surveyId ", surveyId);
+          const payload = {
+            option: question.option,
+            question: question.question,
+            type: "single",
+            surveyId,
+          };
+          dispatch(surveySlice.actions.addQuestion(payload));
           props.setDropdownText("Select question type");
+          props.setPublishFlag(true);
         }}
       >
         Publish

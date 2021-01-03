@@ -3,13 +3,7 @@ import { Button } from "reactstrap";
 import CreateSurvey from "./CreateSurvey";
 import background from "./logo.PNG";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-} from "react-router-dom";
+import { Switch, Link, Route, useHistory } from "react-router-dom";
 import TakeSurvey from "./TakeSurvey";
 import DisplaySurvey from "./DisplaySurvey";
 import { surveySlice, createSurvey } from "./Store/surveySlice";
@@ -20,26 +14,14 @@ function App() {
   let [surveys, setSurveys] = useState([]);
   let history = useHistory();
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (surveyId !== 0) {
-  //     console.log("useEffect here" + surveys.length + " " + surveyId);
-  //     history.push("/createSurvey/" + surveyId);
-  //   }
-  // }, [surveyId]);
-
-  // useEffect(() => {
-  //   createNewSurveyId();
-  //   console.log("Survey added.."+surveys.length);
-  // }, [surveys]);
 
   const createNewSurveyId = () => {
     dispatch(createSurvey())
       .then(unwrapResult)
       .then((result) => {
-        console.log("result on UI ",result);
+        console.log("result on UI ", result);
         history.push("/createSurvey/" + result);
       });
-    //setSurveyId(surveys.length + 1);
   };
   return (
     <div className="App">
@@ -48,10 +30,10 @@ function App() {
           <CreateSurvey surveys={surveys} setSurveys={setSurveys} />
         </Route>
         <Route path="/takeSurvey/:surveyId">
-          <DisplaySurvey surveys={surveys} />
+          <DisplaySurvey />
         </Route>
         <Route path="/takeSurvey">
-          <TakeSurvey surveys={surveys} />
+          <TakeSurvey />
         </Route>
         <Route path="/">
           <div className="App">

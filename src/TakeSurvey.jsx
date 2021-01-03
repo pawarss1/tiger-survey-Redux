@@ -4,12 +4,14 @@ import { Button } from "reactstrap";
 import "./App.css";
 import background from "./logo.PNG";
 import DisplaySurvey from "./DisplaySurvey";
+import { useSelector } from "react-redux";
 
 function TakeSurvey(props) {
   const history = useHistory();
+  const surveyIdList = useSelector(globalStore => globalStore.surveys.map((survey) => survey.surveyId))
   const displaySurvey = (surveyId) => {
-    const result = props.surveys.filter(
-      (survey) => survey.surveyId === surveyId
+    const result = surveyIdList.filter(
+      (surveyIdcur) => surveyIdcur === surveyId
     );
     console.log(result);
     if (result !== undefined) {
@@ -25,22 +27,22 @@ function TakeSurvey(props) {
           </div>
         </div>
       </div>
-      {props.surveys.map((survey, index) => {
+      {surveyIdList.map((surveyId, index) => {
         return (
           <div>
             <Button
               className="survery-btn"
               onClick={() => {
-                displaySurvey(survey.surveyId);
+                displaySurvey(surveyId);
               }}
             >
-              Take Survery: {survey.surveyId}
+              Take Survery: {surveyId}
             </Button>
           </div>
         );
       })}
       <Route path="/takeSurvey/:surveyId">
-        <DisplaySurvey surveys={props.surveys}/>
+        <DisplaySurvey/>
       </Route>
     </div>
   );

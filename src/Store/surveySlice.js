@@ -24,10 +24,16 @@ export const surveySlice = createSlice({
         type
       });
     },
+    markPublished: (state, action) => {
+        const { surveyId } = action.payload;
+        const survey = state.find((s) => s.surveyId === surveyId);
+        survey.isPublished = true;
+        console.log("done..")
+    }
   },
   extraReducers: {
     [createSurvey.fulfilled]: (state, action) => {
-      state.push({ questionList: [], surveyId: action.payload });
+      state.push({ questionList: [], surveyId: action.payload, isPublished: false });
     },
   },
 });

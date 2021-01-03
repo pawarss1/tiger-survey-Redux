@@ -110,9 +110,17 @@ function MultiSelect(props) {
         <Button
           className="survery-btn"
           onClick={() => {
-            props.questionListHandler(question);
-            props.setPublishFlag(true);
+            const surveyId = props.surveyId;
+            console.log("surveyId ", surveyId);
+            const payload = {
+              option: question.options,
+              question: question.question,
+              type: "multi",
+              surveyId,
+            };
+            dispatch(surveySlice.actions.addQuestion(payload));
             props.setDropdownText("Select question type");
+            props.setPublishFlag(true);
           }}
         >
           Publish
