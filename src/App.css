@@ -1,0 +1,61 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.App .survery-btn {
+  background-color: #af5f46;
+  height: 40px;
+  width: 140px;
+  margin: 20px;
+  border: none;
+}
+.survery-btn:hover {
+  background-color: rgb(122, 122, 107);
+  cursor: pointer;
+}
+.dropHeader {
+  width: 183px;
+  margin: auto;
+}
+.dropDown {
+  background-color: #af5f46;
+  width: 183px;
+}
+.question-container {
+  margin: auto;
+  margin-top: 10%;
+  width: 700px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.question-container .btn {
+  background-color: rgb(134, 131, 131);
+}
+.option {
+  margin-top: 20px;
+  font-size: medium;
+  font-weight: 700;
+  text-align: left;
+}
+.question-group {
+  margin-top: 20px;
+}
+.form {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+}
+.radio-btns {
+  margin-left: 25px;
+}
+.question {
+  margin: 25px;
+}
